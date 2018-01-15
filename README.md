@@ -1,3 +1,3 @@
-# es6-Webpack starter
+# Blog Frontend Application
 
-Simple es6 and scss starter using webpack to bundle.
+A generic blog frontend built with vanilla es6 and scss.
