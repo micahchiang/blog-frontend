@@ -5,6 +5,7 @@ export default class App {
 
     constructor() {
         this.blogService = new BlogService();
+        this.domUtils = new DomUtils();
         this.entries;
         this.retrieveEntries();
     }
@@ -12,7 +13,11 @@ export default class App {
     retrieveEntries() {
         this.blogService.retrieveEntries().then((data) => {
             this.entries = data;
-            console.log(this.entries);
+            this.entries.forEach(entry => {
+                this.domUtils.buildListItem(entry);
+            });
         })
     }
+
+
 }
