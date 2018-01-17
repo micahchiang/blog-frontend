@@ -15,9 +15,18 @@ export default class App {
             this.entries = data;
             this.entries.forEach(entry => {
                 this.domUtils.buildListItem(entry);
+                this.domUtils.attachListener(entry._id, 'click', e => {
+                    this.loadEntryData(e.currentTarget.id);
+                })
             });
         })
     }
 
+    loadEntryData(id) {
+        let entry = this.entries.find(e => {
+           return e._id === id;
+        });
+        this.domUtils.loadEntryDisplay(entry);
+    }
 
 }
