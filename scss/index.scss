@@ -88,6 +88,19 @@
     transform: translateX(0%);
   }
 
+  .close__btn {
+    font-size: 3em;
+    position: fixed;
+    top: .5em;
+    left: .5em;
+    opacity: 0;
+    transition: all 250ms ease;
+
+    &.close__btn-visible {
+      opacity: 1;
+    }
+  }
+
   .entry__display {
     width: 100%;
     max-width: 600px;

@@ -8,6 +8,7 @@ export default class App {
         this.domUtils = new DomUtils();
         this.entries;
         this.retrieveEntries();
+        this.hookUpCloseButton();
     }
 
     retrieveEntries() {
@@ -17,9 +18,9 @@ export default class App {
                 this.domUtils.buildListItem(entry);
                 this.domUtils.attachListener(entry._id, 'click', e => {
                     this.loadEntryData(e.currentTarget.id);
-                })
+                });
             });
-        })
+        });
     }
 
     loadEntryData(id) {
@@ -27,6 +28,12 @@ export default class App {
            return e._id === id;
         });
         this.domUtils.loadEntryDisplay(entry);
+    }
+
+    hookUpCloseButton() {
+        this.domUtils.attachListener('entryCloseBtn', 'click', e => {
+            this.domUtils.removeEntryData();
+        })
     }
 
 }

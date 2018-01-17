@@ -33,6 +33,7 @@ export default class DomUtils {
 
     loadEntryDisplay(entry) {
         let container = document.getElementById('entryContainer');
+        let closeBtn = document.getElementById('entryCloseBtn');
         container.classList.contains('entry__container-visible') ?
         container.classList.remove('entry__container-visible') :
         container.classList.add('entry__container-visible');
@@ -52,6 +53,21 @@ export default class DomUtils {
         display.appendChild(body);
         setTimeout(() => {
             display.classList.add('entry__display-visible');
+            closeBtn.classList.add('close__btn-visible');
+        }, 1000);
+    }
+
+    removeEntryData() {
+        let container = document.getElementById('entryContainer');
+        let closeBtn = document.getElementById('entryCloseBtn');
+        let display = document.getElementById('entryDisplay');
+        display.classList.remove('entry__display-visible');
+        while(display.firstChild) {
+            display.removeChild(display.firstChild);
+        }
+        closeBtn.classList.remove('close__btn-visible');
+        setTimeout(() => {
+            container.classList.remove('entry__container-visible');
         }, 1000);
     }
 }
