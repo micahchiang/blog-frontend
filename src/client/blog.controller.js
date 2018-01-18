@@ -1,11 +1,11 @@
 import BlogService from './blog.service';
-import DomUtils from './dom.utils';
+import BlogView from './blog.view';
 
-export default class App {
+export default class BlogController {
 
     constructor() {
         this.blogService = new BlogService();
-        this.domUtils = new DomUtils();
+        this.view = new BlogView();
         this.entries;
         this.retrieveEntries();
         this.hookUpCloseButton();
@@ -15,8 +15,8 @@ export default class App {
         this.blogService.retrieveEntries().then((data) => {
             this.entries = data;
             this.entries.forEach(entry => {
-                this.domUtils.buildListItem(entry);
-                this.domUtils.attachListener(entry._id, 'click', e => {
+                this.view.buildListItem(entry);
+                this.view.attachListener(entry._id, 'click', e => {
                     this.loadEntryData(e.currentTarget.id);
                 });
             });
@@ -27,12 +27,12 @@ export default class App {
         let entry = this.entries.find(e => {
            return e._id === id;
         });
-        this.domUtils.loadEntryDisplay(entry);
+        this.view.loadEntryDisplay(entry);
     }
 
     hookUpCloseButton() {
-        this.domUtils.attachListener('entryCloseBtn', 'click', e => {
-            this.domUtils.removeEntryData();
+        this.view.attachListener('entryCloseBtn', 'click', e => {
+            this.view.removeEntryData();
         })
     }
 

@@ -1,6 +1,6 @@
 // This is your entry file. Import your primary app.js file here.
-import App from './app';
+import BlogController from './client/blog.controller';
 
 window.onload = () => {
-   let app = new App();
+   let blogController = new BlogController();
 }

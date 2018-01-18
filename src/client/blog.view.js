@@ -1,6 +1,6 @@
 // dom interaction goes in here.
 
-export default class DomUtils {
+export default class BlogView {
 
     constructor() {
         this.entriesContainer = document.getElementById('entriesContainer');

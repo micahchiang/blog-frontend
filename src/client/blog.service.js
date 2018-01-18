@@ -1,4 +1,4 @@
-import BackendService from './backend.service';
+import BackendService from '../backend.service';
 
 export default class BlogService {
 
