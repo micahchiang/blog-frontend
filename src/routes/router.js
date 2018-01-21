@@ -1,8 +1,10 @@
+import ClientController from '../client/client.controller';
 
 export default class Router {
 
     constructor(routes) {
         this.routes = routes;
+        this.view = null;
         this.init();
     }
 
@@ -15,20 +17,46 @@ export default class Router {
     }
 
     hasChanged(routes) {
-        console.log(window.location.hash.length);
-        if (window.location.hash.length > 0) {
+        if (window.location.hash.length > 2) {
             for(let route of routes) {
                 if (route.isActiveRoute(window.location.hash.substr(1))) {
-                    // load html here
+                    this.loadView(route.name, route.html).then((res) => {
+                        let body = document.body;
+                        body.innerHTML = res;
+                        if (route.name === 'client') {
+                            this.view = new ClientController();
+                        }
+                    });
                 }
             }
         } else {
             for(let route of routes) {
                 if (route.default) {
-                    // load html here
+                    this.loadView(route.name, route.html).then((res) => {
+                        document.body.innerHTML = res;
+                        this.view = new ClientController();
+                    });
                 }
             }
         }
+    }
+
+    loadView(routeName, fileName) {
+        let url = `views/${fileName}.html`;
+        return new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.onreadystatechange = function() {
+                if (this.readyState !== 4) {
+                    return;
+                }
+                if (this.status !== 200) {
+                    return;
+                }
+                resolve(this.responseText);
+            };
+            xhr.send();
+        });
     }
 
 }

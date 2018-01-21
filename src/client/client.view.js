@@ -1,6 +1,6 @@
 // dom interaction goes in here.
 
-export default class BlogView {
+export default class ClientView {
 
     constructor() {
         this.entriesContainer = document.getElementById('entriesContainer');
@@ -68,6 +68,6 @@ export default class BlogView {
         closeBtn.classList.remove('close__btn-visible');
         setTimeout(() => {
             container.classList.remove('entry__container-visible');
-        }, 1000);
+        }, 500);
     }
 }

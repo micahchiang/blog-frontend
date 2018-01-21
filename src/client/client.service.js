@@ -1,6 +1,6 @@
 import BackendService from '../backend.service';
 
-export default class BlogService {
+export default class ClientService {
 
     constructor() {
         this.backendService = new BackendService();

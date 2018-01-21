@@ -1,11 +1,11 @@
-import BlogService from './blog.service';
-import BlogView from './blog.view';
+import ClientService from './client.service';
+import ClientView from './client.view';
 
-export default class BlogController {
+export default class ClientController {
 
     constructor() {
-        this.blogService = new BlogService();
-        this.view = new BlogView();
+        this.blogService = new ClientService();
+        this.view = new ClientView();
         this.entries;
         this.retrieveEntries();
         this.hookUpCloseButton();
