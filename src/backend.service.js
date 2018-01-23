@@ -1,13 +1,15 @@
+import SessionStorage from './sessionstorage.service';
+
 export default class BackendService {
 
     constructor() {
-        this.browserStorage = window.SessionStorage;
+        this.browserStorage = new SessionStorage();
     }
 
     retrieveEntries() {
         // check session storage before querying api
-        let entries = this.browserStorage.getSessionStorage();
-        if (entries.length > 0) {
+        let entries = this.browserStorage.getSessionStorage('blogEntries');
+        if (entries && entries.length > 0) {
             return entries;
         } else {
             return new Promise((resolve, reject) => {
@@ -20,7 +22,7 @@ export default class BackendService {
                     return res.json();
                 }).then(res => {
                     // set entries in session storage to reduce api querying.
-                    this.browserStorage.setSessionStorage(res);
+                    this.browserStorage.setSessionStorage('blogEntries', res);
                     resolve(res);
                 }).catch(err => {
                     reject(err);
