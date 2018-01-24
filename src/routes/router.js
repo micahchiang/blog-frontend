@@ -1,8 +1,10 @@
 import ClientController from '../client/client.controller';
+import AdminController from '../admin/admin.controller';
 
 export default class Router {
 
-    constructor(routes) {
+    constructor(routes, backendService) {
+        this.backendService = backendService;
         this.routes = routes;
         this.view = null;
         this.init();
@@ -24,7 +26,9 @@ export default class Router {
                         let body = document.body;
                         body.innerHTML = res;
                         if (route.name === 'client') {
-                            this.view = new ClientController();
+                            this.view = new ClientController(this.backendService);
+                        } else if (route.name === 'admin') {
+                            this.view = new AdminController(this.backendService);
                         }
                     });
                 }
@@ -34,7 +38,7 @@ export default class Router {
                 if (route.default) {
                     this.loadView(route.name, route.html).then((res) => {
                         document.body.innerHTML = res;
-                        this.view = new ClientController();
+                        this.view = new ClientController(this.backendService);
                     });
                 }
             }

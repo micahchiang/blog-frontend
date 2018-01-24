@@ -3,8 +3,8 @@ import ClientView from './client.view';
 
 export default class ClientController {
 
-    constructor() {
-        this.blogService = new ClientService();
+    constructor(backendService) {
+        this.blogService = new ClientService(backendService);
         this.view = new ClientView();
         this.entries;
         this.retrieveEntries();
@@ -16,7 +16,7 @@ export default class ClientController {
             this.entries = data;
             this.entries.forEach(entry => {
                 this.view.buildListItem(entry);
-                this.view.attachListener(entry._id, 'click', e => {
+                this.view.addListener(entry._id, 'click', e => {
                     this.loadEntryData(e.currentTarget.id);
                 });
             });
@@ -31,7 +31,7 @@ export default class ClientController {
     }
 
     hookUpCloseButton() {
-        this.view.attachListener('entryCloseBtn', 'click', e => {
+        this.view.addListener('entryCloseBtn', 'click', e => {
             this.view.removeEntryData();
         })
     }

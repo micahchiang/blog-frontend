@@ -1,8 +1,10 @@
 // dom interaction goes in here.
+import * as domutils from '../domutils';
 
 export default class ClientView {
 
     constructor() {
+        this.domutils = domutils;
         this.entriesContainer = document.getElementById('entriesContainer');
         this.entriesList = document.getElementById('entriesList');
     }
@@ -26,9 +28,8 @@ export default class ClientView {
         this.entriesList.appendChild(listItem);
     }
 
-    attachListener(id, listener, callback) {
-        let el = document.getElementById(id);
-        el.addEventListener(listener, callback);
+    addListener(id, listener, callback) {
+        this.domutils.attachListener(id, listener, callback);
     }
 
     loadEntryDisplay(entry) {
