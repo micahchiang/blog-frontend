@@ -11,7 +11,15 @@ export default class AdminController {
 
     login(data) {
         // send data to backend via adminservice;
-        this.adminService.login(data);
+        this.adminService.login(data).then(res => {
+            // build dashboard.
+            let data = JSON.stringify(res);
+            console.log('successfully logged in ' + data);
+        }).catch(err => {
+            // display some sort of message
+            let error = JSON.stringify(err);
+            console.log('an error occured: ' + error);
+        })
     }
 
     hookupLoginBtn() {

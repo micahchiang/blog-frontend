@@ -31,7 +31,28 @@ export default class BackendService {
         }
     }
 
-    login() {
-        
+    login(data) {
+        return new Promise((resolve, reject) => {
+            let options = {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'default',
+                body: JSON.stringify(data),
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                })
+            };
+            fetch('http://localhost:3000/admin/login', options).then(res => {
+                return res.json();
+            }).then(res => {
+                if (res && res.status === 200) {
+                    resolve(res);
+                } else {
+                    reject(res);
+                }
+            }).catch(err => {
+                reject(err);
+            })
+        })
     }
 }
