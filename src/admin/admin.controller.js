@@ -14,7 +14,7 @@ export default class AdminController {
         this.adminService.login(data).then(res => {
             // build dashboard.
             let data = JSON.stringify(res);
-            console.log('successfully logged in ' + data);
+            this.view.loadDashView();
         }).catch(err => {
             // display some sort of message
             let error = JSON.stringify(err);

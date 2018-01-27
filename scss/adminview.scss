@@ -1,0 +1,43 @@
+@import 'dashview';
+
+.admin__container {
+  font-size: 14px;
+  font-weight: 200;
+  font-family: Helvetica;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2em;
+
+  .admin__header {
+    border-bottom: 3px solid #dcdcdc;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    .admin__header-title {
+      font-weight: 200;
+      font-size: 3em;
+      letter-spacing: 2px;
+      margin: 0.5em 0;
+    }
+  }
+
+  .admin__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .admin__login-form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
