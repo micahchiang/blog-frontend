@@ -1,8 +1,20 @@
 <main class="form__container">
+    <header class="admin__header">
+        <h1 class="admin__header-title">Admin Dashboard</h1>
+    </header>
     <form class="blog__form">
-        <input id="title" type="text">
-        <input id="date" type="text">
-        <textarea id="entry" cols="30" rows="20"></textarea>
+        <label>
+            Post Title
+            <input id="title" class="entry__form-input" type="text">
+        </label>
+        <label>
+            Date
+            <input id="date" class="entry__form-input" type="text">
+        </label>
+        <label>
+            Entry
+            <textarea id="entry" cols="30" rows="20" class="entry__form-textarea"></textarea>
+        </label>
     </form>
     <button id="entrySubmitBtn" class="entry__submit-btn">Add Entry</button>
 </main>
