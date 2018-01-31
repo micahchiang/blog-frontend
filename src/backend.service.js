@@ -53,6 +53,32 @@ export default class BackendService {
             }).catch(err => {
                 reject(err);
             })
+        });
+    }
+
+    sendEntry(data) {
+        return new Promise((resolve, reject) => {
+            let options = {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'default',
+                body: JSON.stringify(data),
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                })
+            };
+            fetch('http://localhost:3000/api/create', options).then(res => {
+                return res.json();
+            }).then(res => {
+                if (res && res.status === '200') {
+                    resolve(res);
+                } else {
+                    reject(res);
+                }
+            }).catch(err => {
+                console.log('an error occured: ', err);
+                reject(err);
+            });
         })
     }
 }

@@ -14,4 +14,10 @@ export default class AdminService {
             }
         });
     }
+
+    processEntryForm(data) {
+        return Promise.resolve(this.backendService.sendEntry(data).then(res => {
+            return res;
+        }));
+    }
 }

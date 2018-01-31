@@ -29,14 +29,39 @@ export default class AdminView {
         }
     }
 
+    processEntryForm() {
+        let title = document.getElementById('title').value;
+        let date = document.getElementById('date').value;
+        let body = document.getElementById('entry').value;
+        if (!(title || date || body)) {
+            console.log('fields cannot be blank');
+        } else {
+            let entry = {
+                date: date,
+                title: title,
+                entry: body
+            };
+            return entry;
+        }
+    }
+
     loadDashView() {
-        console.log('gets to view');
-        this.domutils.loadView('dashboard').then(res => {
-            this.dashContainer.innerHTML = res;
-            this.dashContainer.classList.add('dashboard__container-visible');
-        }).catch(err => {
-            console.log('error: ', err);
+        return new Promise((resolve) => {
+            this.domutils.loadView('dashboard').then(res => {
+                this.dashContainer.innerHTML = res;
+                this.dashContainer.classList.add('dashboard__container-visible');
+                resolve();
+            }).catch(err => {
+                console.log('error: ', err);
+            });
         });
+    }
+
+    alertSuccess(data) {
+        alert(data.message);
+        document.getElementById('title').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('entry').value = '';
     }
 
 }
