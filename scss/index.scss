@@ -17,6 +17,10 @@ $break-mobile: 760px;
   margin: 0 auto;
   padding: 2em;
 
+  &.list__container-none {
+    display: none;
+  }
+
   @media screen and (max-width: $break-mobile) {
     max-width: none;
     width: auto;

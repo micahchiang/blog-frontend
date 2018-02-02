@@ -7,6 +7,7 @@ export default class ClientView {
         this.domutils = domutils;
         this.entriesContainer = document.getElementById('entriesContainer');
         this.entriesList = document.getElementById('entriesList');
+        this.listContainer = document.getElementById('listContainer');
     }
 
     buildListItem(entry) {
@@ -53,6 +54,7 @@ export default class ClientView {
         display.appendChild(date);
         display.appendChild(body);
         setTimeout(() => {
+            this.listContainer.classList.add('list__container-none');
             display.classList.add('entry__display-visible');
             closeBtn.classList.add('close__btn-visible');
         }, 1000);
@@ -67,6 +69,7 @@ export default class ClientView {
             display.removeChild(display.firstChild);
         }
         closeBtn.classList.remove('close__btn-visible');
+        this.listContainer.classList.remove('list__container-none');
         setTimeout(() => {
             container.classList.remove('entry__container-visible');
         }, 500);
