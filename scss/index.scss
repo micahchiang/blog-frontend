@@ -2,6 +2,8 @@
 @import 'entryview';
 @import 'adminview';
 
+$break-mobile: 760px;
+
 .container {
   font-size: 14px;
   font-weight: 200;
@@ -14,6 +16,11 @@
   justify-content: center;
   margin: 0 auto;
   padding: 2em;
+
+  @media screen and (max-width: $break-mobile) {
+    max-width: none;
+    width: auto;
+  }
 
   .app__header {
     border-bottom: 3px solid #dcdcdc;
@@ -53,6 +60,7 @@
         align-items: flex-start;
         width: 100%;
         margin: 3em 0;
+        cursor: pointer;
 
         .blog__entry-list-item-title {
           font-weight: 100;
