@@ -50,6 +50,7 @@ export default class AdminView {
             this.domutils.loadView('dashboard').then(res => {
                 this.dashContainer.innerHTML = res;
                 this.dashContainer.classList.add('dashboard__container-visible');
+                this.attachValidationListeners(['title', 'date', 'entry']);
                 resolve();
             }).catch(err => {
                 console.log('error: ', err);
@@ -62,6 +63,19 @@ export default class AdminView {
         document.getElementById('title').value = '';
         document.getElementById('date').value = '';
         document.getElementById('entry').value = '';
+    }
+
+    attachValidationListeners(identifiers) {
+        for(let id of identifiers) {
+            this.addListener(id, 'focus', e => {
+                e.target.classList.add('focused');
+                // do a validation thing
+            });
+            this.addListener(id, 'blur', e => {
+                e.target.classList.remove('focused');
+               // do another validation thing
+            });
+        }
     }
 
 }

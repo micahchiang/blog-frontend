@@ -42,7 +42,8 @@
       }
 
       .entry__form-input {
-        border: none;
+        border: 2px solid rgba(0, 0, 0, 0);
+        outline: none;
         border-radius: 2px;
         padding: 5px;
         font-size: 1.5em;
@@ -55,14 +56,31 @@
         &.valid {
           border: 2px solid #7BBF6A;
         }
+
+        &.focused {
+          border: 2px solid #62B1F6;
+        }
       }
 
       .entry__form-textarea {
-        border: none;
+        border: 2px solid rgba(0, 0, 0, 0);
+        outline: none;
         border-radius: 2px;
         padding: 5px;
         font-size: 1em;
         margin-top: 10px;
+
+        &.invalid {
+          border: 2px solid #F5785A;
+        }
+
+        &.valid {
+          border: 2px solid #7BBF6A;
+        }
+
+        &.focused {
+          border: 2px solid #62B1F6;
+        }
       }
     }
   }
