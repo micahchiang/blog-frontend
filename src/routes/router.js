@@ -1,6 +1,6 @@
 import ClientController from '../client/client.controller';
 import AdminController from '../admin/admin.controller';
-import * as domutils from '../domutils';
+import * as domutils from '../utilities/domutils';
 
 export default class Router {
 
