@@ -10,18 +10,18 @@ export default class FormInput {
         this.isTouched = false;
         this.isInvalid = false;
         this.isValid = false;
-        this.init();
+        this.template = ``;
     }
 
-    init() {
-        // call build
-        // potentially do more things..
-    }
-
-    build(name, type) {
+    buildTemplate() {
         // create document element here
         // attach validation handlers
         // return the element and store in a variable
+        let el = document.createElement('input');
+        el.setAttribute('id', this.inputName);
+        el.setAttribute('type', this.inputType);
+        el.classList.add('entry__form-input');
+        this.template = el;
     }
 
     validationChecks() {
