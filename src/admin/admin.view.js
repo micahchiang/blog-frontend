@@ -1,9 +1,11 @@
 import * as domutils from '../utilities/domutils';
+import * as validations from '../utilities/common_validations';
 
 export default class AdminView {
 
     constructor() {
         this.domutils = domutils;
+        this.validations = validations;
         this.adminContainer = document.getElementById('adminContainer');
         this.dashContainer = document.getElementById('dashContainer');
         this.username = document.getElementById('username');
@@ -74,7 +76,24 @@ export default class AdminView {
             this.addListener(id, 'blur', e => {
                 e.target.classList.remove('focused');
                // do another validation thing
+                this.checkValidity(e.target);
             });
+        }
+    }
+
+    checkValidity(el) {
+        // TODO: if any validations in here fail, disable the submit button and show an error message.
+        // validation checks for title
+        if(el.id === 'title') {
+            if(!this.validations.validateAgainstPattern('title', el.value)) {
+                el.classList.add('invalid');
+            }
+        }
+        // validation checks for date
+        if(el.id === 'date') {
+            if(!this.validations.validateAgainstPattern('date', el.value)) {
+                el.classList.add('invalid');
+            }
         }
     }
 
