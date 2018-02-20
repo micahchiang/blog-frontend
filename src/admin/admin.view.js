@@ -68,14 +68,14 @@ export default class AdminView {
     }
 
     attachValidationListeners(identifiers) {
-        for(let id of identifiers) {
+        for (let id of identifiers) {
             this.addListener(id, 'focus', e => {
                 e.target.classList.add('focused');
                 // do a validation thing
             });
             this.addListener(id, 'blur', e => {
                 e.target.classList.remove('focused');
-               // do another validation thing
+                // do another validation thing
                 this.checkValidity(e.target);
             });
         }
@@ -83,16 +83,36 @@ export default class AdminView {
 
     checkValidity(el) {
         // TODO: if any validations in here fail, disable the submit button and show an error message.
+        let entrySubmitBtn = document.getElementById('entrySubmitBtn');
         // validation checks for title
-        if(el.id === 'title') {
-            if(!this.validations.validateAgainstPattern('title', el.value)) {
+        if (el.id === 'title') {
+            if (!this.validations.validateAgainstPattern('title', el.value)) {
+                if (el.classList.contains('valid')) {
+                    el.classList.remove('valid');
+                }
                 el.classList.add('invalid');
+                entrySubmitBtn.disabled = true;
+            } else {
+                if (el.classList.contains('invalid')) {
+                    el.classList.remove('invalid');
+                }
+                el.classList.add('valid');
+                entrySubmitBtn.disabled = false;
             }
         }
-        // validation checks for date
-        if(el.id === 'date') {
-            if(!this.validations.validateAgainstPattern('date', el.value)) {
+        if (el.id === 'date') {
+            if (!this.validations.validateAgainstPattern('date', el.value)) {
+                if (el.classList.contains('valid')) {
+                    el.classList.remove('valid');
+                }
                 el.classList.add('invalid');
+                entrySubmitBtn.disabled = true;
+            } else {
+                if (el.classList.contains('invalid')) {
+                    el.classList.remove('invalid');
+                }
+                el.classList.add('valid');
+                entrySubmitBtn.disabled = false;
             }
         }
     }
