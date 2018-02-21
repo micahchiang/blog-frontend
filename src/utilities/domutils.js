@@ -21,3 +21,16 @@ export let loadView = function(fileName) {
         xhr.send();
     });
 };
+
+export let displayValidationMessage = function(id, message) {
+    let el = document.getElementById(id);
+    el.innerText = message;
+    el.classList.add('visible');
+};
+
+export let hideValidationMessage = function(id) {
+    let el = document.getElementById(id);
+    if(el.classList.contains('visible')) {
+        el.classList.remove('visible');
+    }
+};

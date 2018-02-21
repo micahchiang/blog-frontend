@@ -91,12 +91,15 @@ export default class AdminView {
                     el.classList.remove('valid');
                 }
                 el.classList.add('invalid');
+                let msg = this.validations.messages['titleInvalid'];
+                this.domutils.displayValidationMessage('titleValidationMessage', msg);
                 entrySubmitBtn.disabled = true;
             } else {
                 if (el.classList.contains('invalid')) {
                     el.classList.remove('invalid');
                 }
                 el.classList.add('valid');
+                this.domutils.hideValidationMessage('titleValidationMessage');
                 entrySubmitBtn.disabled = false;
             }
         }
@@ -106,12 +109,15 @@ export default class AdminView {
                     el.classList.remove('valid');
                 }
                 el.classList.add('invalid');
+                let msg = this.validations.messages['dateInvalid'];
+                this.domutils.displayValidationMessage('dateValidationMessage', msg);
                 entrySubmitBtn.disabled = true;
             } else {
                 if (el.classList.contains('invalid')) {
                     el.classList.remove('invalid');
                 }
                 el.classList.add('valid');
+                this.domutils.hideValidationMessage('dateValidationMessage');
                 entrySubmitBtn.disabled = false;
             }
         }
