@@ -61,6 +61,7 @@ export default class AdminView {
     }
 
     alertSuccess(data) {
+        // handle this better eventually. no alert.
         alert(data.message);
         document.getElementById('title').value = '';
         document.getElementById('date').value = '';
@@ -71,20 +72,16 @@ export default class AdminView {
         for (let id of identifiers) {
             this.addListener(id, 'focus', e => {
                 e.target.classList.add('focused');
-                // do a validation thing
             });
             this.addListener(id, 'blur', e => {
                 e.target.classList.remove('focused');
-                // do another validation thing
                 this.checkValidity(e.target);
             });
         }
     }
 
     checkValidity(el) {
-        // TODO: if any validations in here fail, disable the submit button and show an error message.
         let entrySubmitBtn = document.getElementById('entrySubmitBtn');
-        // validation checks for title
         if (el.id === 'title') {
             if (!this.validations.validateAgainstPattern('title', el.value)) {
                 if (el.classList.contains('valid')) {
