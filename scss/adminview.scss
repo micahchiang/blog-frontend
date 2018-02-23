@@ -38,6 +38,24 @@
     .admin__login-form {
       display: flex;
       flex-direction: column;
+      width: 100%;
+
+      & > * {
+        margin: 1em 0;
+      }
+
+      & > label {
+        color: #cccccc;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5em;
+        font-weight: 500;
+      }
+
+      .login__btn {
+        font-size: 1.5em;
+        padding: 1em;
+      }
     }
   }
 }
