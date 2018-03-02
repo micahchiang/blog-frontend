@@ -17,7 +17,7 @@ export default class AdminView {
         this.domutils.attachListener(id, event, callback);
     }
 
-    processLoginForm() {
+    processLoginForm() {,
         let username = this.username.value;
         let password = this.password.value;
 
