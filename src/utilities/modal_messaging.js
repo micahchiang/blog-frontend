@@ -13,6 +13,7 @@ export default class ModalMessaging {
     buildMessage(type,message) {
         let el = document.createElement('div');
         let childEl = document.createElement('p');
+        el.setAttribute('id', 'modalMessageContainer');
         childEl.innerText = message;
         switch(type) {
             case 'general':
@@ -34,5 +35,13 @@ export default class ModalMessaging {
     showMessage(element) {
         element.classList.add('visible');
         document.appendChild(element);
+        setTimeout(() => {
+            this.removeMessage(element);
+        }, 5000);
+    }
+
+    removeMessage(element) {
+        element.classList.add('transition__out');
+        document.removeChild(element);
     }
 }
