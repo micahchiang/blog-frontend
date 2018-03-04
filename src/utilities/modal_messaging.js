@@ -1,6 +1,6 @@
 export default class ModalMessaging {
 
-    constructor(type,message) {
+    constructor(type, message) {
         this.type = type;
         this.message = message;
         this.init();
@@ -10,12 +10,12 @@ export default class ModalMessaging {
         this.buildMessage(this.type, this.title, this.message);
     }
 
-    buildMessage(type,message) {
+    buildMessage(type, message) {
         let el = document.createElement('div');
         let childEl = document.createElement('p');
         el.setAttribute('id', 'modalMessageContainer');
         childEl.innerText = message;
-        switch(type) {
+        switch (type) {
             case 'general':
                 el.classList.add('general');
             case 'valid':
@@ -42,6 +42,8 @@ export default class ModalMessaging {
 
     removeMessage(element) {
         element.classList.add('transition__out');
-        document.removeChild(element);
+        setTimeout(() => {
+            document.removeChild(element);
+        }, 2500)
     }
 }
