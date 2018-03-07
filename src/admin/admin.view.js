@@ -1,11 +1,13 @@
 import * as domutils from '../utilities/domutils';
 import * as validations from '../utilities/common_validations';
+import * as modalService from '../utilities/modal_messaging';
 
 export default class AdminView {
 
     constructor() {
         this.domutils = domutils;
         this.validations = validations;
+        this.modalService = modalService;
         this.adminContainer = document.getElementById('adminContainer');
         this.dashContainer = document.getElementById('dashContainer');
         this.username = document.getElementById('username');
@@ -17,12 +19,12 @@ export default class AdminView {
         this.domutils.attachListener(id, event, callback);
     }
 
-    processLoginForm() {,
+    processLoginForm() {
         let username = this.username.value;
         let password = this.password.value;
 
         if (username === '' || password === '') {
-            console.log('fields cannot be blank');
+            this.modalService.buildMessage('warning', 'fields cannot be blank', this.adminContainer);
         } else {
             return {
                 'username': username,

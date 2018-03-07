@@ -67,7 +67,7 @@ export default class BackendService {
                     'Content-Type': 'application/json'
                 })
             };
-            fetch('http://localhost:3000/api/create', options).then(res => {
+            fetch('http://localhost:3000/api/entries', options).then(res => {
                 return res.json();
             }).then(res => {
                 if (res && res.status === '200') {

@@ -32,7 +32,9 @@ export default class AdminController {
         this.view.addListener('loginBtn', 'click', e => {
             e.preventDefault();
             let data = this.view.processLoginForm();
-            this.login(data);
+            if(data) {
+                this.login(data);
+            }
         })
     }
 
