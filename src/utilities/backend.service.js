@@ -70,7 +70,7 @@ export default class BackendService {
             fetch('http://localhost:3000/api/entries', options).then(res => {
                 return res.json();
             }).then(res => {
-                if (res && res.status === '200') {
+                if (res && res.status === 201) {
                     resolve(res);
                 } else {
                     reject(res);
