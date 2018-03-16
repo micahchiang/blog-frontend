@@ -17,7 +17,7 @@ export let buildMessage = function (type, message, parent) {
     el.appendChild(childEl);
     setTimeout(() => {
         this.showMessage(el, parent);
-    }, 2500);
+    }, 1000);
 };
 
 export let showMessage = function (element, parent) {

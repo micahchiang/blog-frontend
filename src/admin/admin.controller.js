@@ -1,10 +1,12 @@
 import AdminService from './admin.service';
 import AdminView from './admin.view';
+import * as modalService from '../utilities/modal_messaging';
 
 export default class AdminController {
 
     constructor(backendService) {
         this.adminService = new AdminService(backendService);
+        this.modalService = modalService;
         this.view = new AdminView();
         this.hookupLoginBtn();
     }
@@ -24,7 +26,18 @@ export default class AdminController {
         }).catch(err => {
             // display some sort of message
             let error = JSON.stringify(err);
-            console.log('an error occured: ' + error);
+            if(error && error["status"] === 404) {
+                this.modalService.buildMessage(
+                    'warning',
+                    'incorrect username or password.',
+                    this.view.adminContainer
+                );
+            } else {
+                this.modalService.buildMessage(
+                    'warning',
+                    'an error occurred, please try logging in again.',
+                    this.view.adminContainer);
+            }
         })
     }
 
