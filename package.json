@@ -4,6 +4,8 @@
   "description": "generic blog frontend application",
   "scripts": {
     "start": "npm run build-watch & npm run server",
+    "start-prod": "npm run build & npm run server",
+    "build": "webpack",
     "build-watch": "webpack -d --watch",
     "server": "browser-sync start --server --files='dist/bundle.js,index.html' --no-notify"
   },
