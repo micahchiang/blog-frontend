@@ -25,7 +25,7 @@ export let showMessage = function (element, parent) {
     parent.appendChild(element);
     setTimeout(() => {
         this.removeMessage(element, parent);
-    }, 5000);
+    }, 3500);
 };
 
 export let removeMessage = function (element, parent) {
