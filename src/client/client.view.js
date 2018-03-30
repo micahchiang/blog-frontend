@@ -1,4 +1,3 @@
-// dom interaction goes in here.
 import * as domutils from '../utilities/domutils';
 
 export default class ClientView {

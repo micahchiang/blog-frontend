@@ -12,9 +12,7 @@ export default class AdminController {
     }
 
     login(data) {
-        // send data to backend via adminservice;
         this.adminService.login(data).then(res => {
-            // build dashboard.
             let data = JSON.stringify(res);
             this.view.loadDashView().then(() => {
                 this.view.addListener('entrySubmitBtn', 'click', e => {
@@ -24,7 +22,6 @@ export default class AdminController {
                 });
             });
         }).catch(err => {
-            // display some sort of message
             let error = JSON.stringify(err);
             if(error && error["status"] === 404) {
                 this.modalService.buildMessage(
@@ -36,7 +33,8 @@ export default class AdminController {
                 this.modalService.buildMessage(
                     'warning',
                     'an error occurred, please try logging in again.',
-                    this.view.adminContainer);
+                    this.view.adminContainer
+                );
             }
         })
     }
@@ -53,11 +51,13 @@ export default class AdminController {
 
     processEntryForm(data) {
         if (!data) {
-            // display some sort of toastr, def not an alert...
-            alert('Fields cannot be blank');
+            this.modalService.buildMessage(
+                'warning',
+                'Fields cannot be blank',
+                this.view.dashContainer
+            )
         } else {
             this.adminService.processEntryForm(data).then(res => {
-                // send success msg to view and show toastr
                 this.view.alertSuccess(res);
             });
         }
