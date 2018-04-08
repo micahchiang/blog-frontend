@@ -1,5 +1,7 @@
 {
   "name": "blog-frontend",
+  "author": "Micah Chiang",
+  "email": "micahkchiang@gmail.com",
   "version": "1.0.0",
   "description": "generic blog frontend application",
   "scripts": {
@@ -23,5 +25,6 @@
     "browser-sync": "^2.18.13",
     "extract-text-webpack-plugin": "^3.0.2",
     "webpack": "^3.10.0"
-  }
+  },
+  "license": "MIT"
 }
