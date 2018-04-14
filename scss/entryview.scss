@@ -16,7 +16,7 @@ $break-mobile: 760px;
   transition: all 700ms ease;
 
 
-  &.entry__container-visible {
+  &-visible {
     transform: translateX(0%);
   }
 
@@ -36,7 +36,7 @@ $break-mobile: 760px;
       left: 0.25em;
     }
 
-    &.close__btn-visible {
+    &-visible {
       opacity: 1;
     }
   }
@@ -64,11 +64,11 @@ $break-mobile: 760px;
       width: auto;
     }
 
-    &.entry__display-visible {
+    &-visible {
       opacity: 1;
     }
 
-    .entry__display-title {
+    &-title {
       font-weight: 200;
       font-size: 3em;
       letter-spacing: 2px;

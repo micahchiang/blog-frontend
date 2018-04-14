@@ -34,14 +34,14 @@ $break-mobile: 760px;
     align-items: flex-start;
     justify-content: center;
 
-    .app__header-title {
+    &-title {
       font-weight: 200;
       font-size: 3em;
       letter-spacing: 2px;
       margin: 0.5em 0;
     }
 
-    .app__header-text {
+    &-text {
       margin: 0.5em 0;
     }
   }
@@ -52,7 +52,7 @@ $break-mobile: 760px;
     align-items: center;
     width: 100%;
 
-    .app__body-entries-list {
+    &-entries-list {
       list-style: none;
       width: 100%;
       padding: 0;
@@ -66,14 +66,14 @@ $break-mobile: 760px;
         margin: 3em 0;
         cursor: pointer;
 
-        .blog__entry-list-item-title {
+        &-title {
           font-weight: 100;
           font-size: 2.5em;
           letter-spacing: 2px;
           margin: 0.25em 0;
         }
 
-        .blog__entry-list-item-date {
+        &-date {
           letter-spacing: 2px;
           margin: 0.25em 0;
         }
