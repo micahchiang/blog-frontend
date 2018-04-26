@@ -38,7 +38,7 @@ export default class AdminView {
         let date = document.getElementById('date').value;
         let body = document.getElementById('entry').value;
         if (!(title || date || body)) {
-            this.modalService.buildMessage('warning', 'fields cannot be blank');
+            this.modalService.buildMessage('warning', 'fields cannot be blank', this.dashContainer);
         } else {
             let entry = {
                 date: date,
@@ -63,7 +63,7 @@ export default class AdminView {
     }
 
     alertSuccess(data) {
-        this.modalService.buildMessage('valid', data.message);
+        this.modalService.buildMessage('valid', data.message, this.dashContainer);
         document.getElementById('title').value = '';
         document.getElementById('date').value = '';
         document.getElementById('entry').value = '';
