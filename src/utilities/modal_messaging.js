@@ -1,4 +1,5 @@
 export let buildMessage = function (type, message, parent) {
+    console.log(type, message, parent);
     let el = document.createElement('div');
     let childEl = document.createElement('p');
     el.setAttribute('id', 'modalMessageContainer');
